@@ -2,18 +2,17 @@ name: ci-test
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-
   test:
     name: Test
     runs-on: ubuntu-latest
 
     services:
-       postgres:
+      postgres:
         image: postgres:12
         env:
           POSTGRES_USER: postgres
@@ -26,18 +25,17 @@ jobs:
           --health-retries 5
 
     steps:
- 
-    - name: Set up Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: 1.15
-      id: go
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.15
+        id: go
 
-    - name: Chec out code into the go module directory
-      uses: actions.checkout@v2
+      - name: Chec out code into the go module directory
+        uses: actions.checkout@v2
 
-    - name: Run migrations
-      run: make migrateup
+      - name: Run migrations
+        run: make migrateup
 
-    - name: Test
-      run: make test
+      - name: Test
+        run: make test
