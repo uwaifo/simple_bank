@@ -137,6 +137,7 @@ func TestTransferTx(t *testing.T) {
 
 }
 
+/*
 func TestTransferTxDeadLock(t *testing.T) {
 
 	store := NewStore(testDB)
@@ -195,6 +196,7 @@ func TestTransferTxDeadLock(t *testing.T) {
 	require.Equal(t, accountTwo.Balance+int64(numTrx)*testAmount, updatedAccountTwo.Balance)
 
 }
+*/
 func TestTransferTxDeadlockTwo(t *testing.T) {
 	store := NewStore(testDB)
 
